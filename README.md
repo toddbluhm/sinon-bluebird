@@ -1,16 +1,18 @@
-Sinon-bluebird
-===
 
-A plugin that adds bluebird promise helper methods to [Sinon](https://github.com/cjohansen/Sinon.JS).
+[![Circle CI](https://circleci.com/gh/L7labs/sinon-bluebird.svg?style=svg)](https://circleci.com/gh/L7labs/sinon-bluebird)
 
-Installation
----
-Install sinon-bluebird through npm package manager for node.
+A plugin that adds [bluebird](https://github.com/petkaantonov/bluebird) promise helper methods to [Sinon](https://github.com/cjohansen/Sinon.JS).
 
-`npm install sinon-bluebird`
+## Installation
 
-Usage
-----
+Run `npm install sinon-bluebird`
+
+or `git clone` then `npm install`
+
+Optionally run unit tests: `npm test`
+
+## Usage
+
 Some example usage:
 
 ```js
@@ -54,23 +56,33 @@ obj.foo(); // === 'bar'
 
 ```
 
-API
----
+## API
 
 API documentation for reference.
 
-## Stubs
+### Stubs
 
-### .resolves(value)
+**.resolves(value)**
+
 Returns a resolved bluebird promise with given value
 
-### .rejects(value)
+**.rejects(value)**
+
 Returns a rejected bluebird promise with the given value
 
-Contributors / Inspiration
----
+## Inspiration
+
 Thanks to  [sinon-as-promised](https://github.com/bendrucker/sinon-as-promised) for inspiration.
 
-If your wondering what the main differences are:
-- `sinon-as-promised` allows other promise libraries to be used instead of bluebird
+If you're wondering what the main differences are:
+
+- `sinon-as-promised` allows other promise libraries to be used instead of bluebird (`sinon-bluebird` is designed and optimized for use only with bluebird)
 - `sinon-as-promised` only supports `.then`, `.catch`, and `.finally` methods off of the stub (no special bluebird methods like: `.map`, `.bind`, `.spread`, etc...)
+
+## License
+
+**MIT**
+
+Copyright &copy; 2015 Level Seven
+
+Authored by [Todd Bluhm](https://github.com/toddbluhm)
