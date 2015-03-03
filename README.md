@@ -11,6 +11,13 @@ or `git clone` then `npm install`
 
 Optionally run unit tests: `npm test`
 
+**This package requires that both `sinon` and `bluebird` already be installed.**
+
+*Note: This package has peerDependencies of the following:
+`sinon 1.x`
+`bluebird 2.x`.
+If you need a lower version, create an issue and it can be adjusted as necessary. Please, if you do need a lower version, test it first and then make the request.*
+
 ## Usage
 
 Some example usage:
