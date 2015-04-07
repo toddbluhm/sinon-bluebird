@@ -38,5 +38,87 @@ function rejects(value) {
 // Attach rejects function to sinon
 sinon.stub.rejects = sinon.behavior.rejects = rejects;
 
+//Special getCall method that check of existence of promises in return value and args,
+//if found, then unwraps them uses their value inplace of the promise
+sinon.spy.getPromiseCall = function (i) {
+  if (i < 0 || i >= this.callCount) {
+    return null;
+  }
+
+  //Check for and unwrap args values that are promises
+  var argVals = this.args[i];
+  for (var prop in argVals) {
+    if (argVals[prop] &&
+      typeof argVals[prop].isFulfilled === 'function') {
+      if (argVals[prop].isFulfilled()) {
+        argVals[prop] = argVals[prop].value();
+      }
+      else if (argVals[prop].isRejected()) {
+        argVals[prop] = argVals[prop].reason();
+      }
+    }
+  }
+
+  //Check for and unwrap the return value if its a promise
+  var returnVal = this.returnValues[i];
+  if (returnVal &&
+    typeof returnVal.isFulfilled === 'function') {
+    if (returnVal.isFulfilled()) {
+      returnVal = returnVal.value();
+    }
+    else if (returnVal.isRejected()) {
+      returnVal = returnVal.reason();
+    }
+    else {
+      throw new Error('Promise not resolved yet');
+    }
+  }
+
+  return sinon.spyCall(this, this.thisValues[i], argVals,
+    returnVal, this.exceptions[i],
+    this.callIds[i]);
+};
+
+//Almost identical to internal method except it calls a special getCall method
+sinon.spy.delegateToCallsPromise = function (method, matchAny, actual, notCalled) {
+  this[method] = function () {
+    if (!this.called) {
+      if (notCalled) {
+        return notCalled.apply(this, arguments);
+      }
+      return false;
+    }
+
+    var currentCall;
+    var matches = 0;
+
+    for (var i = 0, l = this.callCount; i < l; i += 1) {
+      currentCall = this.getPromiseCall(i); //Call the special promise getCall method
+
+      if (currentCall[actual || method].apply(currentCall, arguments)) {
+        matches += 1;
+
+        if (matchAny) {
+          return true;
+        }
+      }
+    }
+
+    return matches === this.callCount;
+  };
+};
+
+//return methods
+sinon.spy.delegateToCallsPromise("returnedPromise", true, "returned");
+sinon.spy.delegateToCallsPromise("alwaysReturnedPromise", false, "returned");
+
+//param methods
+sinon.spy.delegateToCallsPromise("calledWithPromise", true, "calledWith");
+sinon.spy.delegateToCallsPromise("calledWithMatchPromise", true, "calledWithMatch");
+sinon.spy.delegateToCallsPromise("alwaysCalledWithPromise", false, "calledWith");
+sinon.spy.delegateToCallsPromise("alwaysCalledWithMatchPromise", false, "calledWithMatch");
+sinon.spy.delegateToCallsPromise("calledWithExactlyPromise", true, "calledWithExactly");
+sinon.spy.delegateToCallsPromise("alwaysCalledWithExactlyPromise", false, "calledWithExactly");
+
 // Expore Sinon
 module.exports = exports = sinon;
