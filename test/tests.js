@@ -17,7 +17,7 @@ describe('Sinon-Bluebird', function () {
       reject: function reject() {
         return BPromise.reject('Error');
       },
-      syncronous: function syncronous() {
+      synchronous: function synchronous() {
         return 'Some string';
       }
     };
@@ -32,7 +32,7 @@ describe('Sinon-Bluebird', function () {
         this.stub2 = sinon.stub(obj, 'reject').resolves('Stubbed Success 2');
 
         //stub example 3 (return array that can be spread)
-        sinon.stub(obj, 'syncronous').resolves(['Stubbed Success', 3]);
+        sinon.stub(obj, 'synchronous').resolves(['Stubbed Success', 3]);
       });
 
       it('should resolve \'success\' method of obj with \'Stubbed Success\' message',
@@ -53,10 +53,10 @@ describe('Sinon-Bluebird', function () {
             });
         });
 
-      it('should resolve \'syncronous\' method of obj with multiple values: \'Stubbed Success\'' +
+      it('should resolve \'synchronous\' method of obj with multiple values: \'Stubbed Success\'' +
         ' and \'3\'',
         function () {
-          return obj.syncronous()
+          return obj.synchronous()
             .spread(function (msg, count) {
               msg.should.equal('Stubbed Success');
               count.should.equal(3);
@@ -68,7 +68,7 @@ describe('Sinon-Bluebird', function () {
         //restore all the functions individually
         obj.success.restore();
         obj.reject.restore();
-        obj.syncronous.restore();
+        obj.synchronous.restore();
       });
     });
 
@@ -80,7 +80,7 @@ describe('Sinon-Bluebird', function () {
         //stub examples
         this.sandbox.stub(obj, 'success').rejects(new Error('Stubbed Failure'));
         this.sandbox.stub(obj, 'reject').rejects('Stubbed Failure 2');
-        this.sandbox.stub(obj, 'syncronous').rejects('Stubbed Failure 3');
+        this.sandbox.stub(obj, 'synchronous').rejects('Stubbed Failure 3');
       });
 
       it('should reject \'success\' method of obj with Error\'Stubbed Failure\' message',
@@ -103,9 +103,9 @@ describe('Sinon-Bluebird', function () {
             });
         });
 
-      it('should reject \'syncronous\' method of obj with Error \'Stubbed Failure 3\' message',
+      it('should reject \'synchronous\' method of obj with Error \'Stubbed Failure 3\' message',
         function () {
-          return obj.syncronous()
+          return obj.synchronous()
             .catch(function (msg) {
               msg.should.be.Error;
               msg.message.should.equal('Stubbed Failure 3');
