@@ -61,8 +61,7 @@ sinon.spy.getPromiseCall = function (i) {
 
   //Check for and unwrap the return value if it's a promise
   var returnVal = this.returnValues[i];
-  if (returnVal &&
-    typeof returnVal.isFulfilled === 'function') {
+  if (returnVal && typeof returnVal.isFulfilled === 'function') {
     if (returnVal.isFulfilled()) {
       returnVal = returnVal.value();
     }
