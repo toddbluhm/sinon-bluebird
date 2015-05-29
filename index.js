@@ -15,7 +15,7 @@ function RejectBPromise(value) {
   this.value = value;
 }
 
-// Go through all Bluebird and Wrap each method on the new RejectBPromise class
+// Go through all Bluebird and wrap each method on the new RejectBPromise class
 Object.keys(BPromise.prototype).map(function (key) {
   RejectBPromise.prototype[key] = function () {
     var prom = new BPromise.reject(this.value);
@@ -27,7 +27,7 @@ Object.keys(BPromise.prototype).map(function (key) {
 function rejects(value) {
   this.rejectBPromise = true;
 
-  //if its a string, wrap it in an error object
+  //if it's a string, wrap it in an error object
   if (typeof value === "string") {
     value = new Error(value);
   }
@@ -38,8 +38,8 @@ function rejects(value) {
 // Attach rejects function to sinon
 sinon.stub.rejects = sinon.behavior.rejects = rejects;
 
-//Special getCall method that check of existence of promises in return value and args,
-//if found, then unwraps them uses their value inplace of the promise
+//Special getCall method that checks for existence of promises in return value and args.
+//If found, then unwraps them using their value in place of the promise
 sinon.spy.getPromiseCall = function (i) {
   if (i < 0 || i >= this.callCount) {
     return null;
@@ -59,7 +59,7 @@ sinon.spy.getPromiseCall = function (i) {
     }
   }
 
-  //Check for and unwrap the return value if its a promise
+  //Check for and unwrap the return value if it's a promise
   var returnVal = this.returnValues[i];
   if (returnVal &&
     typeof returnVal.isFulfilled === 'function') {
@@ -120,5 +120,5 @@ sinon.spy.delegateToCallsPromise("alwaysCalledWithMatchPromise", false, "calledW
 sinon.spy.delegateToCallsPromise("calledWithExactlyPromise", true, "calledWithExactly");
 sinon.spy.delegateToCallsPromise("alwaysCalledWithExactlyPromise", false, "calledWithExactly");
 
-// Expore Sinon
+// Export Sinon
 module.exports = exports = sinon;
