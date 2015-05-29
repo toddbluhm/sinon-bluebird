@@ -5,13 +5,23 @@
   "engines": {
     "node": ">=0.10 <0.13"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/L7labs/sinon-bluebird.git"
-  },
   "scripts": {
     "test": "grunt test"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/L7labs/sinon-bluebird"
+  },
+  "keywords": [
+    "bluebird",
+    "sinon"
+  ],
+  "author": "Todd Bluhm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/L7Labs/sinon-bluebird/issues"
+  },
+  "homepage": "https://github.com/L7Labs/sinon-bluebird",
   "peerDependencies": {
     "sinon": "1.x",
     "bluebird": "2.x"
