@@ -1,6 +1,6 @@
 {
   "name": "sinon-bluebird",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Plugin that adds Bluebird Promise helper methods to Sinon.",
   "engines": {
     "node": ">=0.10 <0.13"
