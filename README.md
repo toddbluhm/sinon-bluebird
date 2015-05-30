@@ -127,17 +127,16 @@ Returns a rejected bluebird promise with the given value.
 
 ### Spies
 
+All spy methods are identical to `sinon`'s version except it automatically unwraps the bluebird promise (if a promise is returned) and compares directly to the unwrapped value. We append the word `Promise` to each method to denote it unwraps a promise.
+
 #### Return Value Methods
 
 *Promises cannot be in a pending state otherwise an error will be thrown.*
 
 **.returnedPromise(value)**
 
-Identical to sinon `.returned()` except it automatically unwraps the bluebird promise(if a promise is returned) and compares directly to the unwrapped value.
-
 **.alwaysReturnedPromise(value)**
 
-Identical to sinon `.alwaysReturned()` except it automatically unwraps the bluebird promise(if a promise is returned) and compares directly to the unwrapped value.
 
 #### Called With Methods
 
@@ -147,27 +146,15 @@ Identical to sinon `.alwaysReturned()` except it automatically unwraps the blueb
 
 **.calledWithPromise(value, ...)**
 
-Identical to sinon `.calledWith()` except it automatically unwraps the bluebird promise(if a promise is passed in) and compares directly to the unwrapped value.
-
 **.calledWithMatchPromise(value, ...)**
-
-Identical to sinon `.calledWithMatch()` except it automatically unwraps the bluebird promise(if a promise is passed in) and compares directly to the unwrapped value.
 
 **.alwaysCalledWithPromise(value, ...)**
 
-Identical to sinon `.alwaysCalledWith()` except it automatically unwraps the bluebird promise(if a promise is passed in) and compares directly to the unwrapped value.
-
 **.alwaysCalledWithMatchPromise(value, ...)**
-
-Identical to sinon `.alwaysCalledWithMatch()` except it automatically unwraps the bluebird promise(if a promise is passed in) and compares directly to the unwrapped value.
 
 **.calledWithExactlyPromise(value, ...)**
 
-Identical to sinon `.calledWithExactly()` except it automatically unwraps the bluebird promise(if a promise is passed in) and compares directly to the unwrapped value.
-
 **.alwaysCalledWithExactlyPromise(value, ...)**
-
-Identical to sinon `.alwaysCalledWithExactly()` except it automatically unwraps the bluebird promise(if a promise is passed in) and compares directly to the unwrapped value.
 
 ## Inspiration
 
