@@ -127,7 +127,7 @@ Returns a rejected bluebird promise with the given value.
 
 ### Spies
 
-All spy methods are identical to `sinon`'s version except it automatically unwraps the bluebird promise (if a promise is returned) and compares directly to the unwrapped value. We append the word `Promise` to each method to denote it unwraps a promise.
+All spy methods are identical to [sinons](http://sinonjs.org/docs/#spies-api) version except it automatically unwraps the bluebird promise (if a promise is returned) and compares directly to the unwrapped value. We append the word `Promise` to each method to denote it unwraps a promise.
 
 #### Return Value Methods
 
