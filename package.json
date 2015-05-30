@@ -1,6 +1,6 @@
 {
   "name": "sinon-bluebird",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Plugin that adds Bluebird Promise helper methods to Sinon.",
   "engines": {
     "node": ">=0.10 <0.13"
@@ -27,11 +27,11 @@
     "bluebird": "2.x"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-jshint": "^0.11.0",
-    "grunt-jsbeautifier": "^0.2.8",
-    "grunt-mocha-test": "^0.12.7",
+    "grunt": "~0.4.5",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-jshint": "~0.11.0",
+    "grunt-jsbeautifier": "~0.2.8",
+    "grunt-mocha-test": "~0.12.7",
     "mocha": "^2.1.0",
     "should": "^5.0.1",
     "bluebird": "^2.9.12",
