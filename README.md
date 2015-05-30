@@ -30,8 +30,10 @@ This package has peerDependencies of the following:
 ```js
 // Require in the libs
 var sinon = require('sinon'),
-  sinonBluebird = require('sinon-bluebird');
+  sinonBluebird = require('sinon-bluebird'),
+  BPromise = require('bluebird');
 
+////// -- Stubs Usage -- //////
 // Create an example function
 var obj = {
   foo: function foo() {
@@ -65,7 +67,48 @@ obj.foo.restore();
 
 // Original method back to normal
 obj.foo(); // === 'bar'
+////// -- End Stubs Usage -- //////
 
+////// -- Spies Usage -- //////
+
+var obj = {
+  returnMethod: function (val) {
+    return BPromise.resolve(val);
+  },
+  paramMethod: function (val, prom, val2) {
+    return true;
+  }
+}
+
+// Return methods
+var spy = sinon.spy(obj, 'returnMethod');
+
+obj.returnMethod('Hello'); //execute the test function
+spy.returnedPromise('Hello'); // === true
+
+obj.returnMethod('World'); //execute the test function a second time
+spy.alwaysReturnedPromise('Hello'); // === false
+
+spy.restore();
+
+//Called With methods
+spy = sinon.spy(obj, 'paramMethod');
+
+obj.paramMethod(BPromise.resolve('Hello')); //pass in a promise
+spy.calledWithPromise('Hello'); // === true
+obj.paramMethod.reset(); //reset spy
+
+/* Pass in a promise mixed with regular values
+ * Note the rejected promise passed in, any rejected promise will possibly show up in console.log
+ * due to how bluebird reports possibly unhandled exceptions (even though in this case we are
+ * intentionally passing in a rejected promise)
+*/
+obj.paramMethod('Hello', BPromise.reject('World'), '!');
+spy.calledWithMatch('Hello', 'World', String);  // === true (match allows for comparison by type too!)
+
+obj.paramMethod.restore() //restore the original method back
+
+////// -- End Spies Usage -- //////
 ```
 
 ## API
@@ -81,6 +124,37 @@ Returns a resolved bluebird promise with the given value
 Returns a rejected bluebird promise with the given value.
 
 *Note: If the given value is a String, that string will be wrapped in an Error object and will be on the message property.*
+
+### Spies
+
+All spy methods are identical to [sinons](http://sinonjs.org/docs/#spies-api) version except it automatically unwraps the bluebird promise (if a promise is returned) and compares directly to the unwrapped value. We append the word `Promise` to each method to denote it unwraps a promise.
+
+#### Return Value Methods
+
+*Promises cannot be in a pending state otherwise an error will be thrown.*
+
+**.returnedPromise(value)**
+
+**.alwaysReturnedPromise(value)**
+
+
+#### Called With Methods
+
+*The promise (or promises) can be anywhere in the list of arguments passed into the spied on function or none at all.*
+
+*Promises cannot be in a pending state otherwise an error will be thrown.*
+
+**.calledWithPromise(value, ...)**
+
+**.calledWithMatchPromise(value, ...)**
+
+**.alwaysCalledWithPromise(value, ...)**
+
+**.alwaysCalledWithMatchPromise(value, ...)**
+
+**.calledWithExactlyPromise(value, ...)**
+
+**.alwaysCalledWithExactlyPromise(value, ...)**
 
 ## Inspiration
 
