@@ -165,6 +165,12 @@ If you're wondering what the main differences are:
 - `sinon-as-promised` allows other promise libraries to be used instead of bluebird (`sinon-bluebird` is designed and optimized for use only with bluebird)
 - `sinon-as-promised` only supports `.then`, `.catch`, and `.finally` methods off of the stub (no special bluebird methods like: `.map`, `.bind`, `.spread`, etc...)
 
+## Contributers
+
+- [Brian Moeskau](https://github.com/bmoeskau)
+
+- [Kevin Moritz](https://github.com/ecorkevin)
+
 ## License
 
 **MIT**
