@@ -26,12 +26,6 @@ Object.keys(BPromise.prototype).map(function (key) {
 // Create the rejects function
 function rejects(value) {
   this.rejectBPromise = true;
-
-  //if it's a string, wrap it in an error object
-  if (typeof value === "string") {
-    value = new Error(value);
-  }
-
   return this.returns(new RejectBPromise(value));
 }
 

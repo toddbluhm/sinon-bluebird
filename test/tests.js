@@ -80,7 +80,7 @@ describe('Sinon-Bluebird', function () {
         //stub examples
         this.sandbox.stub(obj, 'success').rejects(new Error('Stubbed Failure'));
         this.sandbox.stub(obj, 'reject').rejects('Stubbed Failure 2');
-        this.sandbox.stub(obj, 'synchronous').rejects('Stubbed Failure 3');
+        this.sandbox.stub(obj, 'synchronous').rejects(new Error('Stubbed Failure 3'));
       });
 
       it('should reject \'success\' method of obj with Error\'Stubbed Failure\' message',
@@ -97,8 +97,7 @@ describe('Sinon-Bluebird', function () {
         function () {
           return obj.reject()
             .catch(function (msg) {
-              msg.should.be.Error;
-              msg.message.should.equal('Stubbed Failure 2');
+              msg.should.equal('Stubbed Failure 2');
               return BPromise.resolve(true);
             });
         });

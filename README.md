@@ -59,7 +59,8 @@ sinon.stub(obj, 'foo').rejects('AHHHHHH!!!!');
 
 // Execute the stub function
 obj.foo().catch(function(e) {
-  // e === new Error('AHHHHHH!!!!')
+  // e === new Error('AHHHHHH!!!!') [<2.0.0]
+  // e === 'AHHHHHH!!!!' [>=2.0.0]
 });
 
 // Restore back to the original function
@@ -123,7 +124,7 @@ Returns a resolved bluebird promise with the given value
 
 Returns a rejected bluebird promise with the given value.
 
-*Note: If the given value is a String, that string will be wrapped in an Error object and will be on the message property.*
+*Note: If the given value is a String, that string will be wrapped in an Error object and will be on the message property.* **Depreciated in >=2.0.0**
 
 ### Spies
 
@@ -165,7 +166,7 @@ If you're wondering what the main differences are:
 - `sinon-as-promised` allows other promise libraries to be used instead of bluebird (`sinon-bluebird` is designed and optimized for use only with bluebird)
 - `sinon-as-promised` only supports `.then`, `.catch`, and `.finally` methods off of the stub (no special bluebird methods like: `.map`, `.bind`, `.spread`, etc...)
 
-## Contributers
+## Contributors
 
 - [Brian Moeskau](https://github.com/bmoeskau)
 
