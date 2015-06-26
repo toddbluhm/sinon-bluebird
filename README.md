@@ -124,7 +124,7 @@ Returns a resolved bluebird promise with the given value
 
 Returns a rejected bluebird promise with the given value.
 
-*Note: If the given value is a String, that string will be wrapped in an Error object and will be on the message property.* **Depreciated in >=2.0.0**
+*Note: If the given value is a String, that string will be wrapped in an Error object and will be on the message property.* **Removed in >=2.0.0**
 
 ### Spies
 
