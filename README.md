@@ -54,7 +54,7 @@ obj.foo.restore();
 
 // Stub a method that returns a rejected bluebird BPromise
 // Note: For shorthand, just pass in a string and it will be
-// internally wrapped in an Error object
+// internally wrapped in an Error object (removed in >= v2.0.0)
 sinon.stub(obj, 'foo').rejects('AHHHHHH!!!!');
 
 // Execute the stub function
