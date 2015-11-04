@@ -3,6 +3,11 @@ var should = require('should'),
   sinon = require('sinon'),
   sinonBluebird = require('../');
 
+// Disable warnings as these are test cases
+BPromise.config({
+  warnings: false
+});
+
 //Squelch any possibly unhandeled promises logs
 BPromise.onPossiblyUnhandledRejection(function (e, promise) {});
 

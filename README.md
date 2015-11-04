@@ -21,7 +21,7 @@ Optionally run unit tests: `npm test`
 This package has peerDependencies of the following:
 
 - `sinon 1.x`
-- `bluebird 2.x`
+- `bluebird 3.x`
 
 *If you need a lower version, create an issue and it can be adjusted as necessary. Please, if you do need a lower version, test it first and then make the request.*
 
