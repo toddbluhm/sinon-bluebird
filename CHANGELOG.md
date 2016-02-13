@@ -1,5 +1,9 @@
 # Changelog
 
+3.0.1
+---
+- Updated Dev Dependencies
+
 3.0.0
 ---
 - Updated peer dependency bluebird to 3.x (still backwards compatible with 2.x)
