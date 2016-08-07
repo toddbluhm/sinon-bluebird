@@ -1,5 +1,10 @@
 # Changelog
 
+3.0.2
+---
+- Removed the max range limiter for nodejs version
+- Removed the max range limiter for bluebird version
+
 3.0.1
 ---
 - Updated Dev Dependencies
