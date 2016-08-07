@@ -1,9 +1,9 @@
 {
   "name": "sinon-bluebird",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Plugin that adds Bluebird Promise helper methods to Sinon.",
   "engines": {
-    "node": ">=0.10 <6.x"
+    "node": ">=0.10"
   },
   "scripts": {
     "test": "./node_modules/.bin/grunt test"
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/L7Labs/sinon-bluebird",
   "peerDependencies": {
     "sinon": "1.x",
-    "bluebird": ">=2.x <4.x"
+    "bluebird": ">=2.x"
   },
   "devDependencies": {
     "bluebird": "^3.3.0",
