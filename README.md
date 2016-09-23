@@ -1,8 +1,10 @@
 
 [![Travis CI](https://img.shields.io/travis/toddbluhm/sinon-bluebird.svg)](https://travis-ci.org/toddbluhm/sinon-bluebird)
+[![Coveralls](https://img.shields.io/coveralls/toddbluhm/sinon-bluebird.svg?maxAge=2592000)](https://coveralls.io/github/toddbluhm/sinon-bluebird)
 [![NPM version](https://img.shields.io/npm/v/sinon-bluebird.svg)](https://www.npmjs.com/package/sinon-bluebird)
-[![PeerDependencies](https://img.shields.io/david/peer/toddbluhm/sinon-bluebird.svg)](https://github.com/toddbluhm/sinon-bluebird/blob/master/package.json)
 [![Downloads](http://img.shields.io/npm/dm/sinon-bluebird.svg?style=flat)](https://www.npmjs.com/package/sinon-bluebird)
+[![NPM license](https://img.shields.io/npm/l/sinon-bluebird.svg?maxAge=2592000)](https://www.npmjs.com/package/sinon-bluebird)
+[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 A plugin that adds [bluebird](https://github.com/petkaantonov/bluebird) promise helper methods to [Sinon](https://github.com/cjohansen/Sinon.JS).
 
@@ -29,33 +31,33 @@ This package has peerDependencies of the following:
 
 ```js
 // Require in the libs
-var sinon = require('sinon'),
-  sinonBluebird = require('sinon-bluebird'),
-  BPromise = require('bluebird');
+var sinon = require('sinon')
+var BPromise = require('bluebird')
+require('sinon-bluebird')
 
 ////// -- Stubs Usage -- //////
 // Create an example function
 var obj = {
   foo: function foo() {
-    return 'bar';
+    return 'bar'
   }
-};
+}
 
 // Stub a function that returns a resolved bluebird BPromise
-sinon.stub(obj, 'foo').resolves('hello world!');
+sinon.stub(obj, 'foo').resolves('hello world!')
 
 // Execute the stub function
 obj.foo().then(function(val) {
   // val === 'hello world!'
-});
+})
 
 // Restore the original method
-obj.foo.restore();
+obj.foo.restore()
 
 // Stub a method that returns a rejected bluebird BPromise
 // Note: For shorthand, just pass in a string and it will be
 // internally wrapped in an Error object (removed in >= v2.0.0)
-sinon.stub(obj, 'foo').rejects('AHHHHHH!!!!');
+sinon.stub(obj, 'foo').rejects('AHHHHHH!!!!')
 
 // Execute the stub function
 obj.foo().catch(function(e) {
@@ -64,48 +66,48 @@ obj.foo().catch(function(e) {
 });
 
 // Restore back to the original function
-obj.foo.restore();
+obj.foo.restore()
 
 // Original method back to normal
-obj.foo(); // === 'bar'
+obj.foo() // === 'bar'
 ////// -- End Stubs Usage -- //////
 
 ////// -- Spies Usage -- //////
 
 var obj = {
   returnMethod: function (val) {
-    return BPromise.resolve(val);
+    return BPromise.resolve(val)
   },
   paramMethod: function (val, prom, val2) {
-    return true;
+    return true
   }
 }
 
 // Return methods
-var spy = sinon.spy(obj, 'returnMethod');
+var spy = sinon.spy(obj, 'returnMethod')
 
-obj.returnMethod('Hello'); //execute the test function
-spy.returnedPromise('Hello'); // === true
+obj.returnMethod('Hello') //execute the test function
+spy.returnedPromise('Hello') // === true
 
-obj.returnMethod('World'); //execute the test function a second time
-spy.alwaysReturnedPromise('Hello'); // === false
+obj.returnMethod('World') //execute the test function a second time
+spy.alwaysReturnedPromise('Hello') // === false
 
-spy.restore();
+spy.restore()
 
 //Called With methods
-spy = sinon.spy(obj, 'paramMethod');
+spy = sinon.spy(obj, 'paramMethod')
 
-obj.paramMethod(BPromise.resolve('Hello')); //pass in a promise
-spy.calledWithPromise('Hello'); // === true
-obj.paramMethod.reset(); //reset spy
+obj.paramMethod(BPromise.resolve('Hello')) //pass in a promise
+spy.calledWithPromise('Hello') // === true
+obj.paramMethod.reset() //reset spy
 
 /* Pass in a promise mixed with regular values
  * Note the rejected promise passed in, any rejected promise will possibly show up in console.log
  * due to how bluebird reports possibly unhandled exceptions (even though in this case we are
  * intentionally passing in a rejected promise)
 */
-obj.paramMethod('Hello', BPromise.reject('World'), '!');
-spy.calledWithMatch('Hello', 'World', String);  // === true (match allows for comparison by type too!)
+obj.paramMethod('Hello', BPromise.reject('World'), '!')
+spy.calledWithMatch('Hello', 'World', String)  // === true (match allows for comparison by type too!)
 
 obj.paramMethod.restore() //restore the original method back
 
@@ -124,7 +126,7 @@ Returns a resolved bluebird promise with the given value
 
 Returns a rejected bluebird promise with the given value.
 
-*Note: If the given value is a String, that string will be wrapped in an Error object and will be on the message property.* **Removed in >=2.0.0**
+*Note: If the given value is a String, that string will be wrapped in an Error object and will be on the message property. **(Removed in >=2.0.0)***
 
 ### Spies
 

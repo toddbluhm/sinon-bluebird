@@ -6,7 +6,8 @@
     "node": ">=0.10"
   },
   "scripts": {
-    "test": "grunt"
+    "test": "standard --fix && istanbul cover node_modules/.bin/_mocha -- -R spec",
+    "coveralls": "coveralls < coverage/lcov.info"
   },
   "repository": {
     "type": "git",
@@ -14,7 +15,11 @@
   },
   "keywords": [
     "bluebird",
-    "sinon"
+    "sinon",
+    "promises",
+    "stub",
+    "mock",
+    "test"
   ],
   "author": "Todd Bluhm",
   "contributors": [
@@ -32,12 +37,11 @@
   },
   "devDependencies": {
     "bluebird": "^3.3.0",
-    "grunt": "^1.0.1",
-    "grunt-cli": "^1.2.0",
-    "grunt-mocha-test": "^0.13.2",
-    "grunt-standard": "^2.0.0",
+    "coveralls": "^2.11.14",
+    "istanbul": "^0.4.5",
     "mocha": "^3.0.2",
     "should": "^11.1.0",
-    "sinon": "^1.17.3"
+    "sinon": "^1.17.3",
+    "standard": "^8.1.0"
   }
 }
