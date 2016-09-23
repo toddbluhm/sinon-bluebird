@@ -1,7 +1,7 @@
 
-[![Circle CI](https://img.shields.io/circleci/project/L7labs/sinon-bluebird.svg)](https://circleci.com/gh/L7labs/sinon-bluebird)
+[![Travis CI](https://img.shields.io/travis/toddbluhm/sinon-bluebird.svg)](https://travis-ci.org/toddbluhm/sinon-bluebird)
 [![NPM version](https://img.shields.io/npm/v/sinon-bluebird.svg)](https://www.npmjs.com/package/sinon-bluebird)
-[![PeerDependencies](https://img.shields.io/david/peer/L7Labs/sinon-bluebird.svg)](https://github.com/L7labs/sinon-bluebird/blob/master/package.json)
+[![PeerDependencies](https://img.shields.io/david/peer/toddbluhm/sinon-bluebird.svg)](https://github.com/toddbluhm/sinon-bluebird/blob/master/package.json)
 [![Downloads](http://img.shields.io/npm/dm/sinon-bluebird.svg?style=flat)](https://www.npmjs.com/package/sinon-bluebird)
 
 A plugin that adds [bluebird](https://github.com/petkaantonov/bluebird) promise helper methods to [Sinon](https://github.com/cjohansen/Sinon.JS).
@@ -169,13 +169,8 @@ If you're wondering what the main differences are:
 ## Contributors
 
 - [Brian Moeskau](https://github.com/bmoeskau)
-
-- [Kevin Moritz](https://github.com/ecorkevin)
+- [Kevin Moritz](https://github.com/mayorbyrne)
 
 ## License
 
 **MIT**
-
-Copyright &copy; 2015 Level Seven
-
-Authored by [Todd Bluhm](https://github.com/toddbluhm)

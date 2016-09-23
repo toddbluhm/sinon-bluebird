@@ -10,18 +10,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/L7labs/sinon-bluebird"
+    "url": "https://github.com/toddbluhm/sinon-bluebird"
   },
   "keywords": [
     "bluebird",
     "sinon"
   ],
   "author": "Todd Bluhm",
+  "contributors": [
+    "Brian Moeskau",
+    "Kevin Moritz <kevinecor@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/L7Labs/sinon-bluebird/issues"
+    "url": "https://github.com/toddbluhm/sinon-bluebird/issues"
   },
-  "homepage": "https://github.com/L7Labs/sinon-bluebird",
+  "homepage": "https://github.com/toddbluhm/sinon-bluebird",
   "peerDependencies": {
     "sinon": "1.x",
     "bluebird": ">=2.x"
