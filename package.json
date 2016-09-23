@@ -6,35 +6,42 @@
     "node": ">=0.10"
   },
   "scripts": {
-    "test": "./node_modules/.bin/grunt test"
+    "test": "standard --fix && istanbul cover node_modules/.bin/_mocha -- -R spec",
+    "coveralls": "coveralls < coverage/lcov.info"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/L7labs/sinon-bluebird"
+    "url": "https://github.com/toddbluhm/sinon-bluebird"
   },
   "keywords": [
     "bluebird",
-    "sinon"
+    "sinon",
+    "promises",
+    "stub",
+    "mock",
+    "test"
   ],
   "author": "Todd Bluhm",
+  "contributors": [
+    "Brian Moeskau",
+    "Kevin Moritz <kevinecor@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/L7Labs/sinon-bluebird/issues"
+    "url": "https://github.com/toddbluhm/sinon-bluebird/issues"
   },
-  "homepage": "https://github.com/L7Labs/sinon-bluebird",
+  "homepage": "https://github.com/toddbluhm/sinon-bluebird",
   "peerDependencies": {
     "sinon": "1.x",
     "bluebird": ">=2.x"
   },
   "devDependencies": {
     "bluebird": "^3.3.0",
-    "grunt": "~0.4.5",
-    "grunt-cli": "~0.1.13",
-    "grunt-contrib-jshint": "~0.11.0",
-    "grunt-jsbeautifier": "~0.2.8",
-    "grunt-mocha-test": "~0.12.7",
-    "mocha": "^2.4.5",
-    "should": "^8.2.2",
-    "sinon": "^1.17.3"
+    "coveralls": "^2.11.14",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.0.2",
+    "should": "^11.1.0",
+    "sinon": "^1.17.3",
+    "standard": "^8.1.0"
   }
 }
