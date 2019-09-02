@@ -6,6 +6,11 @@
 [![NPM license](https://img.shields.io/npm/l/sinon-bluebird.svg?maxAge=2592000)](https://www.npmjs.com/package/sinon-bluebird)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
+# sinon-bluebird
+
+**Obsolete: This package is obsolete as `sinon` now natively supports the `.resolves` and `.rejects` methods
+along with setting a global `promise` constructor via the `.usingPromise()` method.**
+
 A plugin that adds [bluebird](https://github.com/petkaantonov/bluebird) promise helper methods to [Sinon](https://github.com/cjohansen/Sinon.JS).
 
 ## Installation

@@ -1,13 +1,14 @@
 {
   "name": "sinon-bluebird",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Plugin that adds Bluebird Promise helper methods to Sinon.",
   "main": "index.js",
   "engines": {
     "node": ">=0.10"
   },
   "scripts": {
-    "test": "standard --fix && istanbul cover node_modules/.bin/_mocha -- -R spec",
+    "test": "standard --fix && mocha -R spec",
+    "test-cover": "nyc npm test",
     "coveralls": "coveralls < coverage/lcov.info"
   },
   "repository": {
@@ -37,12 +38,12 @@
     "bluebird": ">=2.x"
   },
   "devDependencies": {
-    "bluebird": "^3.3.0",
-    "coveralls": "^2.11.14",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.0.2",
-    "should": "^11.1.0",
-    "sinon": "^1.17.3",
-    "standard": "^8.1.0"
+    "bluebird": "^3.0.0",
+    "coveralls": "^3.0.0",
+    "mocha": "^3.0.0",
+    "nyc": "^10.0.0",
+    "should": "^13.0.0",
+    "sinon": "^1.0.0",
+    "standard": "^14.0.0"
   }
 }

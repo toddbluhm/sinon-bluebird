@@ -63,14 +63,14 @@ describe('Sinon-Bluebird', function () {
 
       it("should resolve 'synchronous' method of obj with multiple values: 'Stubbed Success'" +
       " and '3'",
-        function () {
-          return obj.synchronous()
-            .spread(function (msg, count) {
-              msg.should.equal('Stubbed Success')
-              count.should.equal(3)
-              return true
-            })
-        })
+      function () {
+        return obj.synchronous()
+          .spread(function (msg, count) {
+            msg.should.equal('Stubbed Success')
+            count.should.equal(3)
+            return true
+          })
+      })
 
       after(function () {
         // restore all the functions individually
@@ -95,7 +95,7 @@ describe('Sinon-Bluebird', function () {
         function () {
           return obj.success()
             .catch(function (msg) {
-              msg.should.be.Error
+              msg.should.be.Error()
               msg.message.should.equal('Stubbed Failure')
               return BPromise.resolve(true)
             })
@@ -114,7 +114,7 @@ describe('Sinon-Bluebird', function () {
         function () {
           return obj.synchronous()
             .catch(function (msg) {
-              msg.should.be.Error
+              msg.should.be.Error()
               msg.message.should.equal('Stubbed Failure 3')
               return BPromise.resolve(true)
             })
@@ -137,7 +137,7 @@ describe('Sinon-Bluebird', function () {
       },
       pendingPromiseMethod: function (prom) {
         return new BPromise(function (resolve, reject) {
-          return
+
         })
       }
     }
@@ -162,8 +162,8 @@ describe('Sinon-Bluebird', function () {
       })
 
       it('should compare value to unwrapped promise value', function () {
-        this.spy.returnedPromise('Hello World!').should.be.true
-        this.spy2.returnedPromise('Good Bye World!').should.be.true
+        this.spy.returnedPromise('Hello World!').should.be.true()
+        this.spy2.returnedPromise('Good Bye World!').should.be.true()
       })
 
       it('should throw if promise is still pending', function () {
@@ -192,8 +192,8 @@ describe('Sinon-Bluebird', function () {
       })
 
       it('should compare value to unwrapped promise value', function () {
-        this.spy.calledWithPromise('reg val', 'Calling Promise').should.be.true
-        this.spy2.calledWithPromise('Calling Bad Promise').should.be.true
+        this.spy.calledWithPromise('reg val', 'Calling Promise').should.be.true()
+        this.spy2.calledWithPromise('Calling Bad Promise').should.be.true()
       })
 
       it('should throw if promise is still pending', function () {
@@ -224,8 +224,8 @@ describe('Sinon-Bluebird', function () {
       })
 
       it('should compare value type to unwrapped promise value type', function () {
-        this.spy.calledWithMatchPromise(Array, String).should.be.true
-        this.spy2.calledWithMatchPromise(Object).should.be.true
+        this.spy.calledWithMatchPromise(Array, String).should.be.true()
+        this.spy2.calledWithMatchPromise(Object).should.be.true()
       })
 
       it('should throw if promise is still pending', function () {
@@ -256,10 +256,10 @@ describe('Sinon-Bluebird', function () {
       })
 
       it('should compare value type to unwrapped promise value type', function () {
-        this.spy.calledWithExactlyPromise(['hello', 'world'], 'Calling Promise').should.be.true
+        this.spy.calledWithExactlyPromise(['hello', 'world'], 'Calling Promise').should.be.true()
         this.spy2.calledWithExactlyPromise({
           name: 'Calling Bad Promise'
-        }).should.be.true
+        }).should.be.true()
       })
 
       it('should throw if promise is still pending', function () {

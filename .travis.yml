@@ -1,16 +1,18 @@
+sudo: required
 dist: trusty
+
+os:
+  - linux
 
 language: node_js
 
 node_js:
-  - "0.10.46"
+  - "0.10"
   - "4"
   - "6"
-
-env:
-  global:
-    - COVERALLS_REPO_TOKEN=nQmloGTal0SeXbiRqNBvqtDUnDFfaA9Cx
-    - COVERALLS_PARALLEL=true
+  - "8"
+  - "10"
+  - "12"
 
 cache:
   directories:
